@@ -1,0 +1,165 @@
+{
+  "ModelName": "TodoApp",
+  "ModelMetadata": {
+    "Author": "",
+    "DateCreated": "Apr 08, 2020, 08:42 AM",
+    "DateLastModified": "Apr 08, 2020, 10:56 AM",
+    "Description": "",
+    "Version": "1.0"
+  },
+  "DataModel": [
+    {
+      "TableName": "todos",
+      "KeyAttributes": {
+        "PartitionKey": {
+          "AttributeName": "PK",
+          "AttributeType": "S"
+        },
+        "SortKey": {
+          "AttributeName": "SK",
+          "AttributeType": "S"
+        }
+      },
+      "NonKeyAttributes": [
+        {
+          "AttributeName": "name",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "context",
+          "AttributeType": "S"
+        }
+      ],
+      "GlobalSecondaryIndexes": [
+        {
+          "IndexName": "GSI1",
+          "KeyAttributes": {
+            "PartitionKey": {
+              "AttributeName": "context",
+              "AttributeType": "S"
+            },
+            "SortKey": {
+              "AttributeName": "SK",
+              "AttributeType": "S"
+            }
+          },
+          "Projection": {
+            "ProjectionType": "INCLUDE",
+            "NonKeyAttributes": [
+              "name"
+            ]
+          }
+        }
+      ],
+      "TableData": [
+        {
+          "PK": {
+            "S": "TODO#1"
+          },
+          "SK": {
+            "S": "PENDING#1"
+          },
+          "name": {
+            "S": "Wash dishes"
+          },
+          "context": {
+            "S": "NEXT"
+          }
+        },
+        {
+          "PK": {
+            "S": "TODO#2"
+          },
+          "SK": {
+            "S": "PENDING#2"
+          },
+          "name": {
+            "S": "Play videogames"
+          },
+          "context": {
+            "S": "INBOX"
+          }
+        },
+        {
+          "PK": {
+            "S": "TODO#3"
+          },
+          "SK": {
+            "S": "PENDING#3"
+          },
+          "name": {
+            "S": "Read a book"
+          },
+          "context": {
+            "S": "NEXT"
+          }
+        },
+        {
+          "PK": {
+            "S": "TODO#4"
+          },
+          "SK": {
+            "S": "DONE#4"
+          },
+          "name": {
+            "S": "Make coffee"
+          },
+          "context": {
+            "S": "NEXT"
+          }
+        },
+        {
+          "PK": {
+            "S": "TAG#home"
+          },
+          "SK": {
+            "S": "PENDING#1"
+          }
+        },
+        {
+          "PK": {
+            "S": "TAG#home"
+          },
+          "SK": {
+            "S": "PENDING#2"
+          }
+        },
+        {
+          "PK": {
+            "S": "TAG#home"
+          },
+          "SK": {
+            "S": "PENDING#3"
+          }
+        },
+        {
+          "PK": {
+            "S": "TAG#study"
+          },
+          "SK": {
+            "S": "PENDING#3"
+          }
+        },
+        {
+          "PK": {
+            "S": "TAG#home"
+          },
+          "SK": {
+            "S": "DONE#4"
+          }
+        },
+        {
+          "PK": {
+            "S": "TAG#work"
+          },
+          "SK": {
+            "S": "DONE#4"
+          }
+        }
+      ],
+      "DataAccess": {
+        "MySql": {}
+      }
+    }
+  ]
+}
